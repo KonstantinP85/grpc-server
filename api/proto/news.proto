@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option go_package = "../../pkg/api";
+
+package api;
+
+message News {
+  string id = 1;
+  string category = 2;
+  int64 datetime = 3;
+  string headline = 4;
+  string image = 5;
+  string related = 6;
+  string resource = 7;
+  string summary = 8;
+  string url = 9;
+}
+
+message GetNewsRequest {
+  int32 id = 1;
+}
+
+message GetNewsResponse {
+  News news = 1;
+}
+
+message UploadNewsRequest {
+
+}
+
+message UploadNewsResponse {
+  int32 count = 1;
+}
+
+service NewsService {
+  rpc GetNews (GetNewsRequest) returns (GetNewsResponse);
+  rpc UploadNews (UploadNewsRequest) returns (UploadNewsResponse);
+}
